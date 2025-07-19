@@ -1,0 +1,98 @@
+/* Glitch Animation */
+@keyframes glitch-anim {
+    0% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); }
+    40% { transform: translate(-3px, -3px); }
+    60% { transform: translate(3px, 3px); }
+    80% { transform: translate(3px, -3px); }
+    100% { transform: translate(0); }
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.glitch::before {
+    color: var(--neon-pink);
+    z-index: -1;
+    animation-delay: 0.1s;
+}
+
+.glitch::after {
+    color: var(--neon-cyan);
+    z-index: -2;
+    animation-delay: 0.3s;
+}
+
+/* Scanline Animation */
+@keyframes scanline {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(100%); }
+}
+
+/* Typewriter Effect */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--neon-cyan); }
+}
+
+.typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 0.15em solid var(--neon-cyan);
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret 0.75s step-end infinite;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Skill Bar Animation */
+@keyframes load-skill {
+    from { width: 0; }
+    to { width: var(--skill-level); }
+}
+
+.skill-bar span {
+    animation: load-skill 1.5s ease-out forwards;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.whatsapp-float {
+    animation: pulse 2s infinite;
+}
+
+/* Profile Image Hover */
+.profile-image:hover {
+    animation: float 2s ease-in-out infinite, pulse 1.5s infinite;
+    box-shadow: 0 0 20px var(--neon-pink);
+    border-color: var(--neon-pink);
+}
